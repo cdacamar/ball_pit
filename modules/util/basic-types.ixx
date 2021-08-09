@@ -1,9 +1,11 @@
-#ifndef BASIC_TYPES_H
-#define BASIC_TYPES_H
-
+module;
 #include <cstdint>
+export module Util.BasicTypes;
 
-#include "bridges/pge-bridge.h"
+import Bridges.PGE;
+
+export
+{
 
 enum class Width : std::int32_t { };
 enum class Height : std::int32_t { };
@@ -26,4 +28,4 @@ using PixelPoint = olc::vi2d;
 using PhysicsPoint = olc::vf2d;
 using Color = olc::Pixel;
 
-#endif // BASIC_TYPES_H
+} // export

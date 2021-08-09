@@ -1,14 +1,14 @@
-#ifndef PHYSICS_ENGINE_H
-#define PHYSICS_ENGINE_H
-
+module;
 #include <chrono>
 #include <memory>
 #include <vector>
+export module Physics.Engine;
 
-#include "physics/physics-ball.h"
-#include "physics/quad-tree.h"
-#include "world/world.h"
+import Physics.Ball;
+import Physics.QuadTree;
+import World;
 
+export
 class PhysicsEngine
 {
     static constexpr int d_time = 16;
@@ -67,5 +67,3 @@ private:
     std::vector<std::chrono::milliseconds> current_tree_build_times;
     std::vector<std::chrono::milliseconds> current_collision_times;
 };
-
-#endif // PHYSICS_ENGINE_H

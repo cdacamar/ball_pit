@@ -1,8 +1,11 @@
-#include "physics/physics-engine.h"
-
+module;
 #include <cassert>
 
-#include "util/stopwatch.h"
+#include <memory>
+#include <vector>
+module Physics.Engine;
+
+import Util.Stopwatch;
 
 void PhysicsEngine::update(float dt, World* world)
 {

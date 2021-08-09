@@ -1,8 +1,8 @@
-#ifndef STOPWATCH_H
-#define STOPWATCH_H
-
+module;
 #include <chrono>
+export module Util.Stopwatch;
 
+export
 class Stopwatch
 {
 public:
@@ -39,5 +39,3 @@ private:
     Clock::time_point start_ = { };
     Clock::time_point stop_ = { };
 };
-
-#endif // STOPWATCH_H

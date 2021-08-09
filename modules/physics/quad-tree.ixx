@@ -1,18 +1,20 @@
-#ifndef QUAD_TREE_H
-#define QUAD_TREE_H
-
+module;
+#include <array>
 #include <concepts>
 #include <memory>
 #include <utility>
 #include <vector>
+export module Physics.QuadTree;
 
-#include "physics/physics-ball.h"
-#include "physics/physics-utils.h"
-#include "util/basic-types.h"
-#include "util/enum-utils.h"
+import Physics.Ball;
+import Physics.Utils;
+import Util.BasicTypes;
+import Util.EnumUtils;
 
+export
 enum class Level : int { };
 
+export
 class QuadTree
 {
     static constexpr int max_depth = 5;
@@ -173,5 +175,3 @@ private:
     BoundingBox rect;
     const Level level;
 };
-
-#endif // QUAD_TREE_H

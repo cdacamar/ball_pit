@@ -1,8 +1,10 @@
-#ifndef PHYSICS_UTILS_H
-#define PHYSICS_UTILS_H
+export module Physics.Utils;
 
-#include "util/basic-types.h"
-#include "util/enum-utils.h"
+import Util.BasicTypes;
+import Util.EnumUtils;
+
+export
+{
 
 struct AABBBox
 {
@@ -10,7 +12,7 @@ struct AABBBox
     Radius radius = { };
 };
 
-inline bool overlap_AABB(const AABBBox& first, const AABBBox& second)
+bool overlap_AABB(const AABBBox& first, const AABBBox& second)
 {
     return first.center.x + rep(first.radius) + rep(second.radius) > second.center.x
         && first.center.x < second.center.x + rep(first.radius) + rep(second.radius)
@@ -59,7 +61,7 @@ private:
     Height h;
 };
 
-inline bool point_in(const PixelPoint& point, const Box& box)
+bool point_in(const PixelPoint& point, const Box& box)
 {
     return box.left() + rep(box.width()) > point.x
         && box.left() <= point.x
@@ -67,4 +69,4 @@ inline bool point_in(const PixelPoint& point, const Box& box)
         && box.top() <= point.y;
 }
 
-#endif // PHYSICS_UTILS_H
+} // export

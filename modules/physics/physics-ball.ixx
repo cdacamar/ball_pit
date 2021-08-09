@@ -1,10 +1,9 @@
-#ifndef PHYSICS_BALL_H
-#define PHYSICS_BALL_H
+export module Physics.Ball;
 
-#include "physics/physics-utils.h"
-#include "util/basic-types.h"
-#include "util/enum-utils.h"
-#include "world/world.h"
+import Physics.Utils;
+import Util.BasicTypes;
+import Util.EnumUtils;
+import World;
 
 struct PhysicalProperties
 {
@@ -12,6 +11,7 @@ struct PhysicalProperties
     float friction = .85f;
 };
 
+export
 class PhysicsBall
 {
 public:
@@ -143,5 +143,3 @@ private:
     float time_remaining = 0.f;
     bool exploded = false;
 };
-
-#endif // PHYSICS_BALL_H

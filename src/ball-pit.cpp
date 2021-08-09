@@ -1,12 +1,8 @@
-#include "bridges/pge-bridge.h"
+import Bridges.PGE;
 
-#include "physics/physics-ball.h"
-#include "physics/physics-engine.h"
-#include "physics/quad-tree.h"
-#include "util/basic-types.h"
-#include "util/enum-utils.h"
-#include "util/random-generator.h"
-#include "world/world.h"
+import Physics;
+import Util;
+import World;
 
 class BallPit : olc::PixelGameEngine
 {
@@ -63,10 +59,10 @@ public:
         physics_engine.update(dt, &world);
 
         // Draw
-        Clear(olc::BLACK);
+        Clear(olc::ModuleColors::Black());
 
         // Let anything overlap this.
-        DrawString({ 10, rep(world.height()) - 10 }, "TAB to show help");
+        DrawString({ 10, rep(world.height()) - 10 }, "TAB to show help", olc::ModuleColors::White());
 
         draw_physics();
 
@@ -127,27 +123,27 @@ private:
         constexpr int starting_point = 20;
 
         // Background
-        FillRect({ 10, 10 }, { rep(world.width()) - starting_point, total_height + 10 }, olc::BLUE);
+        FillRect({ 10, 10 }, { rep(world.width()) - starting_point, total_height + 10 }, olc::ModuleColors::Blue());
 
         PixelPoint pos = { starting_point, starting_point };
         // Quit
-        DrawString(pos, "ESC: Quit");
+        DrawString(pos, "ESC: Quit", olc::ModuleColors::White());
         pos.y += text_height;
 
         // Help
-        DrawString(pos, "TAB: Show this help");
+        DrawString(pos, "TAB: Show this help", olc::ModuleColors::White());
         pos.y += text_height;
 
         // Clear balls
-        DrawString(pos, "C: Clear balls");
+        DrawString(pos, "C: Clear balls", olc::ModuleColors::White());
         pos.y += text_height;
 
         // Draw quad tree
-        DrawString(pos, "Q: Draw quad trees");
+        DrawString(pos, "Q: Draw quad trees", olc::ModuleColors::White());
         pos.y += text_height;
 
         // Drop balls
-        DrawString(pos, "Mouse 1: Drop balls!");
+        DrawString(pos, "Mouse 1: Drop balls!", olc::ModuleColors::White());
     }
 
     void draw_physics()
@@ -175,7 +171,7 @@ private:
             draw_quad_tree();
         }
 
-        DrawString({ 10, 10 }, std::to_string(alive_balls));
+        DrawString({ 10, 10 }, to_string(alive_balls), olc::ModuleColors::White());
     }
 
     void draw_quad_tree()
@@ -185,7 +181,7 @@ private:
             auto boxes = tree->all_boxes();
             for (const QuadTree::BoundingBox& box : boxes)
             {
-                const Color color = olc::RED;
+                const Color color = olc::ModuleColors::Red();
                 // Top line
                 DrawLine({ box.left(), box.top() }, { box.right(), box.top() }, color);
                 // Right line

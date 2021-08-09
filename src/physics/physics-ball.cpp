@@ -1,6 +1,6 @@
-#include "physics/physics-ball.h"
-
+module;
 #include <cassert>
+module Physics.Ball;
 
 void PhysicsBall::static_collision_response(PhysicsBall* a, PhysicsBall* b)
 {

@@ -1,16 +1,17 @@
-#ifndef RANDOM_GENERATOR_H
-#define RANDOM_GENERATOR_H
-
+module;
 #include <concepts>
 #include <random>
+export module Util.RandomGenerator;
 
-#include "util/enum-utils.h"
+import Util.EnumUtils;
 
 enum class RandomSeed : decltype(std::random_device{}()) { };
 
+export
 template <std::integral I>
 using IntDistribution = std::uniform_int_distribution<I>;
 
+export
 template <std::floating_point I>
 using RealDistribution = std::uniform_real_distribution<I>;
 
@@ -69,12 +70,11 @@ private:
     std::mt19937 generator{ rep(seed) };
 };
 
-inline RandomNumberGenerator& random_generator()
+export
+RandomNumberGenerator& random_generator()
 {
     // The random number generator in <random> is HUGE and expensive to construct,
     // so we will only have one.
     static RandomNumberGenerator generator{ };
     return generator;
 }
-
-#endif // RANDOM_GENERATOR_H

@@ -1,9 +1,9 @@
-#ifndef WORLD_H
-#define WORLD_H
+export module World;
 
-#include "util/basic-types.h"
-#include "util/enum-utils.h"
+import Util.BasicTypes;
+import Util.EnumUtils;
 
+export
 class World
 {
 public:
@@ -46,5 +46,3 @@ private:
     Width world_width = Width{};
     Height world_height = Height{};
 };
-
-#endif // WORLD_H

@@ -1,7 +1,9 @@
-#ifndef ENUM_UTILS_H
-#define ENUM_UTILS_H
-
+module;
 #include <type_traits>
+export module Util.EnumUtils;
+
+export
+{
 
 template <typename T>
 concept Enum = std::is_enum_v<T>;
@@ -12,4 +14,4 @@ using PrimitiveType = std::underlying_type_t<E>;
 template <Enum E>
 constexpr auto rep(E e) { return PrimitiveType<E>(e); }
 
-#endif // ENUM_UTILS_H
+} // export
