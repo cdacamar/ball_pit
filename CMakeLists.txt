@@ -1,12 +1,8 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.28)
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
     message(FATAL_ERROR "Do not build in-source. Please remove CMakeCache.txt and the CMakeFiles/ directory. Then build out-of-source.")
 endif()
-
-# WORKAROUND
-# This is added so that CMake can recognize the .ixx extension as a module interface.
-set(CMAKE_CXX_SYSROOT_FLAG_CODE "list(APPEND CMAKE_CXX_SOURCE_FILE_EXTENSIONS ixx)")
 
 project(
     "ball_pit"
@@ -41,7 +37,6 @@ target_compile_definitions(ball_pit PRIVATE
 target_compile_features(ball_pit PRIVATE cxx_std_20)
 
 target_compile_options(ball_pit PRIVATE
-    $<$<CXX_COMPILER_ID:MSVC>:
-        /W4 /WX /permissive- /Z7 /MT /MP /Bt+>)
+    $<$<CXX_COMPILER_ID:MSVC>:/Bt+>)
 
 set_target_properties(ball_pit PROPERTIES INTERPROCEDURAL_OPTIMIZATION ON)
